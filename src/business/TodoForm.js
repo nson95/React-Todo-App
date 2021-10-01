@@ -3,11 +3,11 @@ import React, {useState} from 'react'
 function TodoForm(props) {
 const [input, setInput] = useState('');
 
-const handleChange = e => {
+function handleChange(e) {
     setInput(e.target.value);
 }
 
-const handleSubmit = e => {
+function handleSubmit(e) {
     e.preventDefault();
 
     props.onSubmit({

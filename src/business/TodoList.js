@@ -5,16 +5,18 @@ import TodoForm from './TodoForm'
 function TodoList() {
     const [todos, setTodos] = useState([]);
 
-    const addTodo = todo => {
+    function addTodo(todo) {
         if(!todo.text || /^\s*$/.test(todo.text)) {
             return
         }
         const newTodos = [todo, ...todos];
+
         setTodos(newTodos);
+
         console.log(...todos);
     };
 
-    const updateTodo = (todoId, newValue) => {
+    function updateTodo(todoId, newValue) {
         if (!newValue.text || /^\s*$/.test(newValue.text)) {
             return;
         }
@@ -23,13 +25,13 @@ function TodoList() {
         );
     }
 
-    const removeTodo = id => {
+    function removeTodo(id) {
         const removeArr = [...todos].filter(todo => todo.id !== id)
 
         setTodos(removeArr)
     }
 
-    const completeTodo = id => {
+    function completeTodo(id) {
         let updatedTodos = todos.map(todo => {
             if (todo.id===id) {
                 todo.isComplete = !todo.isComplete
@@ -42,11 +44,11 @@ function TodoList() {
     return (
         <div>
            <h1>Whats the plan stan?</h1>
-           <TodoForm onSubmit={addTodo}/> 
-           <Todo 
-           todos={todos} completeTodo={completeTodo} 
-           removeTodo={removeTodo}
-           updateTodo={updateTodo} />
+            <TodoForm onSubmit={addTodo}/> 
+                <Todo 
+                todos={todos} completeTodo={completeTodo} 
+                removeTodo={removeTodo}
+                updateTodo={updateTodo} />
         </div>
     )
 }
