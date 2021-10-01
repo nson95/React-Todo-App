@@ -23,13 +23,13 @@ function TodoList() {
 
         setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item))
         );
-    }
+    };
 
     function removeTodo(id) {
         const removeArr = [...todos].filter(todo => todo.id !== id)
 
         setTodos(removeArr)
-    }
+    };
 
     function completeTodo(id) {
         let updatedTodos = todos.map(todo => {
@@ -51,6 +51,6 @@ function TodoList() {
                 updateTodo={updateTodo} />
         </div>
     )
-}
+};
 
 export default TodoList
